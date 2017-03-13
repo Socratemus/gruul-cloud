@@ -1,0 +1,55 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0, shrink-to-fit=no')
+            
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <?= $this->headLink()
+            ->prependStylesheet($this->basePath('assets/css/main.css'))
+            ;
+        ?>
+        
+        <!-- HEADSCRIPTS -->    
+    </head>
+    <body>
+        <main data-layout>
+            <!-- AICI ADAUGA MENIUL GENERATE DINAMIC??? -->
+            <header data-layout>
+                <div class="float-left">
+                    <h4 class="logo-wp"><a class="logo-text" href="">Zuul</a></h4>
+                </div>
+                
+                <div class="float-right">
+                    <nav>
+                        <ul>
+                            <li><a href="">Utilizatori</a></li>
+                            <li><a href="">Module</a></li>
+                            <li><a href="">Alerte</a></li>
+                            <li><a href="">Contul meu</a></li>
+                        </ul>
+                    </nav>    
+                </div>
+            </header>
+            
+            <content data-layout>
+            <?= $this->content; ?>    
+            </content>
+            
+            <!--<footer data-layout></footer>-->
+        </main>
+        
+        <!-- FOOTER SCRIPTS -->
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

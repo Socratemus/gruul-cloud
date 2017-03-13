@@ -1,0 +1,93 @@
+html, body {
+    height : 100%;
+}
+
+main[data-layout] {
+    height : 100%;
+}
+
+content[data-layout] {
+    display: block;
+    height : calc(100vh - 70px);
+    padding: 0px 10px;
+    background : $app-background-color;
+}
+
+header[data-layout] { 
+    background: $header-background-color;
+    color: $white;
+    height: 40px;
+    padding: 0 0 0 0;
+    position: relative;
+    z-index: 3;
+    .logo-wp {
+        margin : 0;
+        height: 40px;
+        line-height: 40px;
+        .logo-text {
+            color   : $header-font-color;
+            display : block;
+            padding : 0px 12px;
+        }
+    }
+    nav {
+        ul {
+            margin : 0; padding : 0px 0px;
+            list-style : none;
+            li {
+                display : inline-block;
+                float : left;
+                width: 120px;
+                border-right : 1px solid $header-background-open-color;
+                
+                &:last-child {
+                    border-right : 0px;
+                }
+                
+                &:hover {
+                    background : $header-background-open-color;
+                }
+                
+                a {
+                    color : $header-font-color;
+                    padding: 7px 15px;
+                    display: block;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+footer[data-layout] {
+    height : 30px; width : 100%; line-height : 30px;
+    border-top : 1px solid lightgray;
+}
+
+body {
+    font-family : $main-family;    
+    font-size : $global-size;
+}
+
+h1 {
+    
+}
+
+h2 {
+    
+}
+
+h3 {
+    
+}
+
+h4 {
+    
+}
+
+a {
+    
+}
