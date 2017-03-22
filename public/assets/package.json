@@ -9,15 +9,16 @@
   "author": "Corneliu Iancu",
   "license": "ISC",
   "devDependencies": {
+    "ckeditor": "^4.6.2",
     "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.4.1",
-    "grunt-contrib-uglify": "~0.5.0",
-    "materialize-css": "~0.97.7",
-    "grunt-contrib-sass": "~1.0.0",
-    "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-watch": "~1.0.0",
     "grunt-contrib-concat": "~1.0.1",
-    "jquery" : "~3.1.0"
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-jshint": "~0.4.1",
+    "grunt-contrib-sass": "~1.0.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "jquery": "~3.1.0",
+    "materialize-css": "~0.97.7"
   },
   "dependencies": {
     "express": "^4.13.3",

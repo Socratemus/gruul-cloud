@@ -1,0 +1,54 @@
+.front-widget-row {
+    border-bottom: 1px solid #d6d6d6;
+    padding-top : 10px;
+    padding-bottom : 10px;
+    float : left; width : 100%;
+    box-shadow: 0px 1px 0px 0px #FFF;
+    
+    .front-widget-item {
+        float: left;
+        margin-right: 5px;
+        padding: 3px;
+        height: 90px;
+        width: 120px;
+        background: #FFF;
+        box-shadow: 0px 0px 17px -8px;
+        padding: 15px;
+        
+        > div {
+            height: 80%;
+            color: #80aace;
+            text-align: center;
+        }
+        
+        > h6 {
+            font-size : 16px;
+            text-align : center;
+        }
+        
+        i {
+            font-size : 38px;
+        }
+    }
+}
+
+header[data-type="title"] {
+    background-color: $subheader-background;
+    border-bottom : 1px solid #e0e0e0;
+    height : 35px;
+    h4 {
+        float : left;
+        line-height : 35px;
+        font-size : $medium-font-size;
+    }
+    
+    .form-btn {
+        float : right;
+        margin-top : 5px;
+    }
+    
+}
+
+.ck-editor-container {
+    padding: 20px 5px;
+}
