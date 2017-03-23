@@ -1,0 +1,64 @@
+<div>
+    
+    <div>
+        <header data-type="title" class='row'>
+            <div class="col">
+                <h4>Toate formele curente</h4>
+                <button class="form-btn" data-submit="DocumentFieldsForm">Salveaza</button>
+            </div>
+        </header>
+    </div>
+    
+    <div class="row form-add-field-control">
+        
+        <div class="col-5 form-group has-no-margin">
+            <div class="row">
+                <div class="col-4">
+                    <label>Denumire camp</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-input" type="text" name="" value="" id="field_name">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-5 form-group has-no-margin">
+            <div class="row">
+                <div class="col-4">
+                    <label>Denumire Variabila</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-input" disabled type="text" name="" value="" id="field_slug">
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-2 text-right">
+            <button class="form-btn" onClick="myforms.onFieldAdd()">Adauga</button>
+        </div>
+    </div>
+    
+    <form class="row mt15" method="POST" content id="DocumentFieldsForm">
+    
+        <div id="form-tpl" class="col-6 form-group hide">
+            <div class="row">
+                <div class="col-4">
+                    <label data-placeholder="field_name"></label>
+                </div>
+                <div class="col-6">
+                    <input type="hidden" disabled data-placeholder="field_name" name="field_name[]" />
+                    <input class="form-input" disabled data-placeholder="field_slug" readonly type="text" name="field_key[]" value="">
+                </div>
+                <div class="col-2">
+                    <button class="form-btn btn-danger">DEL</button>
+                </div>
+            </div>
+        </div>
+        <button id="add-form" type="SUBMIT" class="hide"></button>
+    </form>
+    
+</div>
+
+<?php
+    $this->inlineScript()->appendFile($this->basePath('assets/app/form.js'));
+?>

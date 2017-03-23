@@ -8,15 +8,21 @@ $small-font-size                : 13px;
 $medium-font-size               : 18px;
 $big-font-size                  : 18px;
 
-$app-background-color           : #f5f5f5;
 
-
-$subheader-background           : #fdfdfd;
 
 $light-shadow                   : 0.5px 0.5px 4px -1px rgba(0,0,0,.45);
 
-$disabled                       : rgb(229, 229, 229);
-$lightgray-text                  : #8f8f8f;
+//---------------- GRAY LIGHTS ------------------//
+$gray-xs : #fdfdfd;
+$gray-sm : #f3f3f3;
+$gray-md : #ebebeb;
+//-----------------------------------------------//
+
+$subheader-background           : $gray-xs;
+$app-background-color           : $gray-md;
+
+$disabled                       : rgb(235, 235, 228);
+$lightgray-text                 : rgb(84, 84, 84);
 $white                          : #FFF;
 $primary-color                  : #42A5F5;
 $primary-color-active           : #328ad6;    

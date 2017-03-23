@@ -1,0 +1,54 @@
+<div>
+    <header data-type="title" class='row'>
+        <div class="col">
+            <h4>Adauga un nou template</h4>
+        
+            <button class="form-btn" data-submit="TemplateForm">Adauga</button>
+        </div>
+    </header>
+    
+    <content>
+       
+            <form method="POST" class="row" id="TemplateForm">
+                <div class="ck-editor-container col-8 pl20 pr20">
+                    <textarea name="template-editor" id="template-editor" rows="10" cols="80">
+                        This is my textarea to be replaced with CKEditor.
+                    </textarea>    
+                </div>
+                
+                <div class="col-4 mt20">
+                    
+                    <div class="form-group row">
+                      <label for="example-text-input" class="col-3">Denumire</label>
+                      <div class="col">
+                        <input class="form-input" type="text" name="template_name" value="Chitanta de aia" id="">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                      <label for="example-search-input" class="col-3">Autor</label>
+                      <div class="col">
+                        <input class="form-input" readonly type="text" name="template_owner" value="Cornelius M." id="">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                      <label for="example-search-input" class="col-3">Creat la</label>
+                      <div class="col">
+                        <input class="form-input" type="text" readonly name="template_created_at" value="<?= date('d, M Y, H:i')?>"     id="">
+                      </div>
+                    </div>
+
+                </div>
+                
+            </form>
+        </div>
+        
+    </content>
+    
+</div>
+
+<?php
+    $this->inlineScript()->appendFile($this->basePath('assets/node_modules/ckeditor/ckeditor.js'));
+    $this->inlineScript()->appendFile($this->basePath('assets/app/template.js'));
+?>

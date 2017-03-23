@@ -454,7 +454,7 @@ content[data-layout] {
   display: block;
   height: calc(100vh - 70px);
   padding: 0px 15px;
-  background: #f5f5f5;
+  background: #ebebeb;
 }
 
 header[data-layout] {
@@ -517,6 +517,20 @@ body {
   font-size: 0.85rem;
 }
 
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.form-group label {
+  margin: 0;
+  font-size: 13px;
+}
+
+.form-group.has-no-margin {
+  margin: 0px;
+}
+
 .form-input {
   font-family: "Roboto Condensed", sans-serif, sans-serif;
   width: 100%;
@@ -527,10 +541,9 @@ body {
   border-radius: 1px;
 }
 .form-input[readonly] {
-  background: #e5e5e5;
-  color: #8f8f8f;
+  background: #ebebe4;
+  color: #545454;
   border: 0;
-  box-shadow: none;
 }
 
 .form-btn {
@@ -585,7 +598,7 @@ body {
 
 header[data-type="title"] {
   background-color: #fdfdfd;
-  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0.5px 0.5px 4px -1px rgba(0, 0, 0, 0.45);
   height: 35px;
 }
 header[data-type="title"] h4 {
@@ -596,6 +609,13 @@ header[data-type="title"] h4 {
 header[data-type="title"] .form-btn {
   float: right;
   margin-top: 5px;
+}
+
+.form-add-field-control {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  box-shadow: 0.5px 0.5px 4px -1px rgba(0, 0, 0, 0.45);
+  background-color: #f3f3f3;
 }
 
 .ck-editor-container {

@@ -34,7 +34,8 @@
 
 header[data-type="title"] {
     background-color: $subheader-background;
-    border-bottom : 1px solid #e0e0e0;
+    //border-bottom : 1px solid #e0e0e0;
+    box-shadow : $light-shadow;
     height : 35px;
     h4 {
         float : left;
@@ -49,6 +50,13 @@ header[data-type="title"] {
     
 }
 
-.ck-editor-container {
-    padding: 20px 5px;
+.form-add-field-control {
+    padding-top : 7px; padding-bottom : 7px;
+    box-shadow : $light-shadow;
+    background-color: $gray-sm;
 }
+
+.ck-editor-container {
+    padding: 20px 5px; 
+}
+
