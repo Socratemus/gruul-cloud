@@ -22,6 +22,16 @@ class IndexController extends AbstractActionController
     public function indexAction() {
         $request = $this->getRequest();
         
+        $form_id = 5; //Hard coded value
+        
+        $forms = $this->getEntityManager()->getRepository('Forms\Entity\Form')->findAll();
+        
+        if(!isset($forms[0]) || empty($forms[0])) {
+            throw new \Doctrine\ORM\EntityNotFoundException("Form" . ' with ID: [ ' . $template_id . ' ] was not found.');
+        }
+        
+        $form = $forms[0];
+        
         if($request->isPost()) {
             $data = $request->getPost(); 
             $template = new Template();
@@ -35,25 +45,20 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('template', ['action' => 'edit', 'id' => $template->getTemplateId()]);
         }
         
-        
-        return new ViewModel(['template' => new Template(), 'action' => 'NEW']);
+        return new ViewModel(['template' => new Template(), 'action' => 'NEW', 'form' => $form]);
     }
     
     public function editAction() {
         $request = $this->getRequest();
         $template_id = $this->params()->fromRoute('id');
         
-        $form_id = 1; //Hard coded value
+        $forms = $this->getEntityManager()->getRepository('Forms\Entity\Form')->findAll();
         
-        $form = $this->getEntityManager()->getRepository('Forms\Entity\Form')->findBy([
-            'form_id' => $form_id
-        ]);
-        
-        if(!isset($form[0]) || empty($form[0])) {
+        if(!isset($forms[0]) || empty($forms[0])) {
             throw new \Doctrine\ORM\EntityNotFoundException("Form" . ' with ID: [ ' . $template_id . ' ] was not found.');
         }
         
-        $form = $form[0];
+        $form = $forms[0];
         
         $template = $this->getEntityManager()->getRepository(self::TEMPLATE_REPO)->findBy(['template_id'=>$template_id]);
         

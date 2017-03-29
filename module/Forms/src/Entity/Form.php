@@ -27,7 +27,7 @@ class Form {
     /**
      * @ORM\Column(type="string", length = 255)
      */
-    private $form_name;
+    private $form_name = "Default Form";
     
     /**
      * One Form has Many Fields.

@@ -444,7 +444,7 @@
 
 html, body {
   height: 100%;
-  overflow : hidden;
+  overflow: hidden;
 }
 
 main[data-layout] {
@@ -566,6 +566,13 @@ body {
   box-shadow: none;
 }
 
+.form-btn-default {
+  margin: 3px;
+  background-color: #f8f8f8;
+  color: #484848;
+  font-weight: 600;
+}
+
 .front-widget-row {
   border-bottom: 1px solid #d6d6d6;
   padding-top: 10px;
@@ -623,8 +630,11 @@ header[data-type="title"] .form-btn {
   padding: 20px 5px;
 }
 
-/*# sourceMappingURL=main.css.map */
 #form-elements {
-    min-height : 25px;
-    background : #cccccc;
+  min-height: 25px;
+  background: #f8f8f8;
+  border: 1px solid #d1d1d1;
+  border-bottom: 0;
 }
+
+/*# sourceMappingURL=main.css.map */

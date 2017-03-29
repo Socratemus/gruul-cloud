@@ -16,7 +16,7 @@
                 <div class="ck-editor-container col-8 pl20 pr20">
                     <div id="form-elements">
                         <?php foreach($form->getFields() as $field) : ?>
-                        <button class="mb5 form-btn-default" value="<?=$field->getFieldKey()?>"
+                        <button class="mb5 form-btn form-btn-default" value="<?=$field->getFieldKey()?>"
                                 data-form-element
                                 ><?=$field->getFieldName()?></button>
                         <?php endforeach; ?>
