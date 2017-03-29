@@ -444,6 +444,7 @@
 
 html, body {
   height: 100%;
+  overflow : hidden;
 }
 
 main[data-layout] {
@@ -623,3 +624,7 @@ header[data-type="title"] .form-btn {
 }
 
 /*# sourceMappingURL=main.css.map */
+#form-elements {
+    min-height : 25px;
+    background : #cccccc;
+}

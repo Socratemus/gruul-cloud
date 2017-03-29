@@ -21,6 +21,10 @@
         console.error(Error);
      },
      
+     formatFieldKey : function(fieldKey) {
+        return '[[' + fieldKey + ']]';
+     },
+     
      Utils : {
          slugify : function(value) {
              return value

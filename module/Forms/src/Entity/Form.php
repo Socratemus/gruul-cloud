@@ -25,8 +25,13 @@ class Form {
     private $form_id;
     
     /**
+     * @ORM\Column(type="string", length = 255)
+     */
+    private $form_name;
+    
+    /**
      * One Form has Many Fields.
-     * @ORM\OneToMany(targetEntity="Forms\Entity\Field", mappedBy="Form", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Forms\Entity\Field", mappedBy="form", cascade={"persist", "remove"})
      */
     protected $fields;
     
@@ -34,5 +39,13 @@ class Form {
         $this->fields = new ArrayCollection();
         $this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
+    }
+    
+    public function getFields() {
+        return $this->fields;
+    }
+    
+    public function setFields($fields) {
+        $this->fields = $fields;
     }
 }

@@ -1,9 +1,22 @@
+var EDITOR_ID = 'template-editor';
+
 $(function(){
-    
     $('button[data-submit]').on('click', onClickHandler);
+    $('button[data-form-element]').on('click', insertTextAtFocusPoint);
+    CKEDITOR.replace( EDITOR_ID, {
+        customConfig: '../../app/ckeditor_config.js'
+    } );
     
-    CKEDITOR.replace( 'template-editor' );
 });
+
+
+
+function insertTextAtFocusPoint(evt) {
+    var btn = $(evt.target);
+    CKEDITOR.instances[EDITOR_ID].insertText(General.formatFieldKey(btn.val()));
+    evt.preventDefault();
+    return false;
+}
 
 function onClickHandler(e) {
     var target = e.target;

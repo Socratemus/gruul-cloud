@@ -10,10 +10,10 @@ return [
     'router' => [
         'routes' => [
             
-            'form' => [
+            'forms_route' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/forms[/:action]',
+                    'route'    => '/form[/:action[/:id]]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',

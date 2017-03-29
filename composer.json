@@ -28,7 +28,8 @@
         "psr-4": {
             "Application\\"     : "module/Application/src/",
             "Template\\"        : "module/Template/src/",
-            "Forms\\"        : "module/Forms/src/"
+            "Forms\\"           : "module/Forms/src/",
+            "WordEngine\\"      : "module/WordEngine/src/"
         }
     },
     "autoload-dev": {

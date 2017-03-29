@@ -35,7 +35,7 @@ class Field {
     
     /**
      * Many Fields have One Form.
-     * @ORM\ManyToOne(targetEntity="Forms\Entity\Form", inversedBy="fields" , cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Forms\Entity\Form", inversedBy="fields")
      * @ORM\JoinColumn(name="form_id", referencedColumnName="form_id", onDelete="CASCADE")
      */
     protected $form;

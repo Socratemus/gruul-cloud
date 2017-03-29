@@ -18,7 +18,7 @@ return [
             'template' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/template[/:action]',
+                    'route'    => '/template[/:action[/:id]]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',

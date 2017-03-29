@@ -42,7 +42,6 @@ function Forms() {
         this.fieldname.keyup(function(evt){that.onKeyUpTemplateField(evt); });
         
         $(this.form_container).on('click', '.form-btn.btn-danger', that.onDeleteField)
-        
     }
 }
 

@@ -26,7 +26,6 @@ class IndexController extends AbstractActionController
             
             $data = $request->getPost(); 
             
-            
             foreach($data['field_name'] as $index => $object) {
                 $field = new Field();
                 $field->setFieldName($object);

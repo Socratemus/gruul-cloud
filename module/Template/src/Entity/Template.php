@@ -24,8 +24,13 @@ class Template {
     private $template_id;
     
     /**
-	 * @ORM\Column(type="text")
-	 */
+     * @ORM\Column(type="string", length=255)
+     */
+    private $template_name;
+    
+    /**
+     * @ORM\Column(type="text")
+     */
     private $content;
     
 }
