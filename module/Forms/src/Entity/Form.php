@@ -25,6 +25,11 @@ class Form {
     private $form_id;
     
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $is_form_default = 0;
+    
+    /**
      * @ORM\Column(type="string", length = 255)
      */
     private $form_name = "Default Form";

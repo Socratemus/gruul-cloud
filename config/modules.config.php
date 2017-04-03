@@ -18,5 +18,5 @@ return [
     'DoctrineORMModule',
 
     'Application',
-    'Template', 'Forms', 'WordEngine'
+    'Template', 'Forms', 'Folders', 'WordEngine'
 ];

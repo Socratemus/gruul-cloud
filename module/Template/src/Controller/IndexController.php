@@ -88,6 +88,8 @@ class IndexController extends AbstractActionController
             $em->getClassMetadata('Template\Entity\Template'),
             $em->getClassMetadata('Forms\Entity\Form'),	
             $em->getClassMetadata('Forms\Entity\Field'),	
+            $em->getClassMetadata('Folders\Entity\Folder'),
+            $em->getClassMetadata('Folders\Entity\FieldValue')
 	);
         $tool = new \Doctrine\ORM\Tools\SchemaTool($em);
         $tool->updateSchema($meta);   

@@ -1,0 +1,80 @@
+<content>
+    
+    <header data-type="title" class='row'>
+        <div class="col">
+            <h4>Adauga un nou dosar</h4>
+            <button class="form-btn" data-submit="FolderForm">Adauga</button>
+        </div>
+    </header>
+    
+    <form action="" method="POST" class="row form-add-field-control" id="FolderForm">
+        
+        <div class="col-6 form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Numar dosar</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-input" readonly type="text" name="folder_number" value="<?= 1 . 'A' . '/' . date('Y') ?>" id="folder_number">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-6 form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Denumire</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-input" type="text" name="folder_alias" value="" id="folder_alias">
+                </div>
+                <div class="col-3">
+                    <span>(*optional)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-6 form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Creat la date</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-input" readonly type="text" name="folder_created" value="<?= date('d-m-Y') ?>" id="folder_created">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-6 form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label>Modificat la data</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-input" readonly type="text" name="folder_updated" value="<?= date('d-m-Y') ?>" id="folder_updated">
+                </div>
+            </div>
+        </div>
+        
+        <br /><br />
+        <!-- Insert default form here -->
+        
+        <?php foreach($default_form->getFields() as $field) : ?>
+        <div class="col-6 form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label><?=$field->getFieldName()?></label>
+                </div>
+                <div class="col-5">
+                    <input class="form-input" type="text" name="field_values[<?=$field->getFieldId();?>]" value="" id="<?=$field->getFieldKey();?>">
+                </div>
+                <!--<div class="col-3">-->
+                <!--    <span>(*optional)</span>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <?php endforeach; ?>
+        
+    </form>
+    
+</content>

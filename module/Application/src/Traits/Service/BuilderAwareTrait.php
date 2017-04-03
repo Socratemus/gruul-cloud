@@ -20,14 +20,14 @@ trait BuilderAwareTrait {
 	
 		if(!method_exists($this, $method))
 		{
-				throw new \BadMethodCallException(get_class($this) . " does not implement [$method] method.");
+			throw new \BadMethodCallException(get_class($this) . " does not implement [$method] method.");
 		}
 	}
 	
 	private function onSetterCall($property, $args) {
 		if(!property_exists($this, $property)) 
 		{
-				throw new InvalidArgumentException("Property [$property] does not exists on [".get_class($this)."]");
+			throw new \InvalidArgumentException("Property [$property] does not exists on [".get_class($this)."]");
 		}
 		$this->$property = $args[0];
 	}
@@ -36,7 +36,7 @@ trait BuilderAwareTrait {
 		if(!property_exists($this, $property)) 
 		{
 				$property = $property ?: "PROPERTY_NOT_SET"; 
-				throw new InvalidArgumentException("Property [`" . $property . "`] does not exists on [".get_class($this)."]");
+				throw new \InvalidArgumentException("Property [`" . $property . "`] does not exists on [".get_class($this)."]");
 		}
 		return $this->$property;
 	}
