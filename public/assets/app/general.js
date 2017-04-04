@@ -9,6 +9,14 @@
              }
              $('#'+form).submit();
          });
+          $(document).on('click', 'button[data-toggle]', function(evt) {
+             var target = $(evt.target).closest('button[data-toggle]'); 
+             var to_toggle = target.attr('data-toggle');
+             if(!$('#' + to_toggle).length){
+                General.sendErrorMessage("TOGGLE_CONTAINER_NOT_FOUND");
+             }
+             $('#' + to_toggle).toggleClass('open');
+          });
      },
      
      test : function(e) {

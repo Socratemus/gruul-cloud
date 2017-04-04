@@ -162,6 +162,16 @@ input {
         background : $primary-color-active;
         box-shadow : none;
     }
+    
+    &.btn-danger {
+        background-color: #d9534f !important;
+        border-color: #d9534f !important;
+        font-size: 12px !important;
+        height: 18px;
+        vertical-align: -webkit-baseline-middle;
+        line-height: 17px;
+        // padding: 0px 16px !important;
+    }
 }
 
 .form-btn-default {
@@ -169,4 +179,76 @@ input {
     background-color: #f8f8f8;
     color: #484848;
     font-weight: 600;
+}
+
+.form-btn-icon {
+    outline : none;
+    z-index : 5;
+    &:active {
+        box-shadow : none;
+        outline : none;
+    }
+    &:focus {
+        outline : none;
+    }
+    
+    border: 0;
+    border-radius: 50%;
+    background: #989898;
+    line-height: 24px;
+    vertical-align: top;
+    height: 24px;
+    width: 25px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bolder;
+    box-shadow: 0px 4px 9px -3px rgb(66, 65, 65);
+}
+
+.notification-popup-holder {
+    position: absolute;
+    left: -1000px;
+    right: 0;
+    margin: auto;
+    width: 250px;
+    top: 0;
+    height: 30px;
+    bottom: 0;
+    background: #009688;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    opacity: 0;
+    visibility : hidden;
+    transition: all 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
+    
+    &.open {
+        left : 0;
+        opacity: 1;
+        visibility : visible;
+    }
+    
+    p {
+        margin: 0;
+        line-height: 30px;
+        font-size: 14px;
+        color: #FFF;
+        text-align: center;
+    }
+}
+
+div[toggle-container] {
+    position : relative;
+    .expandable {
+        height : 0; overflow : hidden; visibility : hidden;
+        transition : all 0.2s ease-in-out;
+    }
+    &.open .expandable {
+        height : 90px; visibility: visible;
+        border-left: 3px solid #449d44;
+    }
+    .form-add-field-control {
+        color : $white;
+        background-color : #505050;
+        box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
+    }
 }

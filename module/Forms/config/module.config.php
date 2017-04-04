@@ -13,7 +13,7 @@ return [
             'forms_route' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/form[/:action[/:id]]',
+                    'route'    => '/forms[/:action[/:id]]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',

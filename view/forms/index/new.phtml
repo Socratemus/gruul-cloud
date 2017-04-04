@@ -1,0 +1,148 @@
+<content>
+    
+    <header data-type="title" class='row'>
+        <div class="col">
+            <h4>Adauga un nou formular</h4>
+            <button class="form-btn" data-submit="DocumentFieldsForm">
+                
+                <?= $action == 'new' ? 'Adauga' : 'Salveaza' ?>
+                <?php// if($action == 'new') { ?> 
+                    
+                <? //} else { ?> 
+                    
+                <?php// } ?>
+            </button>
+        </div>
+    </header>
+    
+    <div class="row form-add-field-control">
+        <div class="col-4 form-group has-no-margin">
+            <div class="row">
+                <div class="col-4">
+                    <label>Denumire formular</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-input" type="text" name="form_name" value="<?= $form->getFormName() ?>" id="form_name">
+                </div>
+            </div>
+        </div>
+        <div class="col-4 form-group has-no-margin">
+            <div class="row">
+                <div class="col-4">
+                    <label>Folosit in mod default</label>
+                </div>
+                <div class="col-8">
+                    <input type="checkbox" name="is_form_default" <?= $form->getIsFormDefault() ? 'checked' : '' ?> value="1" id="is_form_default"/>
+                    <!--<input class="form-input" type="text" name="" value="" id="field_name">-->
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <div class="row" toggle-container id="form-fields-control">
+        <button data-toggle="form-fields-control" class="form-btn-icon" style="position: absolute;right: 50px;top: -13px;"><i class="fa fa-angle-double-down"></i></button>
+        <div class="col expandable open">
+            <div class="row form-add-field-control">
+                <div class="col-4 form-group">
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Denumire camp</label>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-input" type="text" name="" value="" id="field_name">
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-4 form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Denumire Variabila</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-input" disabled type="text" name="" value="" id="field_slug">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 form-group"></div>
+                <div class="col-4 form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Tip</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-input" type="text" disabled name="">
+                                <option>Tip camp</option>
+                                <option>Tip selector</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Sursa de date</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-input" type="text" disabled name="">
+                                <option>Tip camp</option>
+                                <option>Tip selector</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-4 form-group has-no-margin">
+                    <div class="row">
+                        <div class="col">
+                            <button class="form-btn mt5" id="form_add_new_field">Adauga camp nou</button>            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <form class="row mt15" method="POST" content id="DocumentFieldsForm">
+        <input type="hidden" name="form_name" value="<?= $form->getFormName() ?>" />
+        <input type="hidden" name="is_form_default" value="<?= $form->getIsFormDefault() ?>" />
+        <?php foreach($form->getFields() as $field): ?>
+        <div class="col-4 form-group ">
+            <div class="row">
+                <div class="col-4">
+                    <!--<label data-placeholder="field_name"><?=$field->getFieldName()?></label>-->
+                    <input type="text" class="form-input" data-placeholder="field_name" name="field_name[]" value="<?=$field->getFieldName()?>" />
+                </div>
+                <div class="col-5">
+                    <input type="hidden" name="field_id[]" value="<?=$field->getFieldId();?>" />
+                    
+                    <input class="form-input" data-placeholder="field_slug" readonly type="text" name="field_key[]" value="<?=$field->getFieldKey()?>">
+                </div>
+                <div class="col-2">
+                    <button class="form-btn btn-danger">DEL</button>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+        <div id="form-tpl" class="col-4 form-group hide">
+            <div class="row">
+                <div class="col-4">
+                    <label data-placeholder="field_name"></label>
+                </div>
+                <div class="col-5">
+                    <input type="hidden" disabled data-placeholder="field_name" name="field_name[]" />
+                    <input class="form-input" disabled data-placeholder="field_slug" readonly type="text" name="field_key[]" value="">
+                </div>
+                <div class="col-2">
+                    <button class="form-btn btn-danger">DEL</button>
+                </div>
+            </div>
+        </div>
+        <button id="add-form" type="SUBMIT" class="hide"></button>
+    </form>
+    
+</content>
+
+<?php
+    $this->inlineScript()->appendFile($this->basePath('assets/app/form.js'));
+?>
