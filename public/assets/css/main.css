@@ -444,7 +444,6 @@
 
 html, body {
   height: 100%;
-  overflow: hidden;
 }
 
 main[data-layout] {
@@ -456,6 +455,11 @@ content[data-layout] {
   height: calc(100vh - 70px);
   padding: 0px 15px;
   background: #ebebeb;
+  overflow: auto;
+}
+
+[page-content] {
+  background: #FFF;
 }
 
 header[data-layout] {
@@ -518,6 +522,11 @@ body {
   font-size: 0.85rem;
 }
 
+h6 {
+  font-weight: 300;
+  text-indent: 10px;
+}
+
 .hide {
   display: none;
   visibility: hidden;
@@ -573,6 +582,16 @@ body {
   vertical-align: -webkit-baseline-middle;
   line-height: 17px;
 }
+.form-btn.btn-success {
+  background-color: #308f30;
+  font-size: 12px;
+  height: 18px;
+  vertical-align: middle;
+  line-height: 16px;
+}
+.form-btn[disabled] {
+  background: #8e8e8e;
+}
 
 .form-btn-default {
   margin: 3px;
@@ -602,6 +621,15 @@ body {
 }
 .form-btn-icon:focus {
   outline: none;
+}
+
+.highlight {
+  background: #5cac00;
+  padding: 0 5px;
+  line-height: 19px;
+  color: #FFF;
+  border-radius: 2px;
+  font-size: 85%;
 }
 
 .notification-popup-holder {
@@ -715,6 +743,56 @@ header[data-type="title"] .form-btn {
   background: #f8f8f8;
   border: 1px solid #d1d1d1;
   border-bottom: 0;
+}
+
+.document-box-item {
+  margin-bottom: 25px;
+  background: #FFF;
+  position: relative;
+}
+.document-box-item > div {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.document-box-item i {
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 28px;
+  color: #007bdc;
+}
+.document-box-item p {
+  margin-top: 5px;
+  font-size: 14px;
+  margin: 0;
+  padding-left: 10px;
+  font-weight: 600;
+}
+.document-box-item .left {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-right: 1px solid #f0f0f0;
+}
+.document-box-item .right {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 0;
+}
+.document-box-item .right hr {
+  margin: 0;
+}
+.document-box-item .right .form-btn {
+  margin-top: 5px;
+  float: right;
+  margin-right: 5px;
+}
+
+.loading {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  display: none;
+  right: 20px;
 }
 
 /*# sourceMappingURL=main.css.map */

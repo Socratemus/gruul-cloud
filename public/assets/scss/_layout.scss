@@ -1,6 +1,6 @@
 html, body {
     height : 100%;
-    overflow : hidden;
+    
 }
 
 main[data-layout] {
@@ -12,6 +12,11 @@ content[data-layout] {
     height : calc(100vh - 70px);
     padding: 0px 15px;
     background : $app-background-color;
+    overflow : auto;
+}
+
+[page-content] {
+    background : $white;
 }
 
 header[data-layout] { 
@@ -102,6 +107,13 @@ h4 {
     
 }
 
+h5 {}
+
+h6 {
+    font-weight: 300;
+    text-indent: 10px;
+}
+
 a {
     
 }
@@ -172,6 +184,18 @@ input {
         line-height: 17px;
         // padding: 0px 16px !important;
     }
+    
+    &.btn-success {
+        background-color: #308f30;
+        font-size: 12px;
+        height: 18px;
+        vertical-align: middle;
+        line-height: 16px;
+    }
+    
+    &[disabled] {
+        background: #8e8e8e;
+    }
 }
 
 .form-btn-default {
@@ -205,6 +229,14 @@ input {
     box-shadow: 0px 4px 9px -3px rgb(66, 65, 65);
 }
 
+
+.highlight {
+    background: rgb(92, 172, 0);
+    padding: 0 5px;
+    line-height: 19px;
+    color: #FFF;
+    border-radius: 2px; font-size : 85%;
+}
 .notification-popup-holder {
     position: absolute;
     left: -1000px;

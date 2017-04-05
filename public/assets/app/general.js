@@ -17,6 +17,20 @@
              }
              $('#' + to_toggle).toggleClass('open');
           });
+          
+          $(document).on('click', 'button[preloader]', function(evt){
+              var $target = $(evt.target);
+              $target.prop('disabled', true);
+              var $preloader = $($target.attr('preloader'));
+              $preloader.show();
+          });
+     },
+     
+     revertPreloader : function(button){
+          var $target = button;
+          $target.prop('disabled', false);
+          var $preloader = $($target.attr('preloader'));
+          $preloader.hide();
      },
      
      test : function(e) {

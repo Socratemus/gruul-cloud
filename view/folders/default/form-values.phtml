@@ -1,0 +1,22 @@
+<?php foreach($default_form->getFields() as $field ) :
+    $field_value = new \Folders\Entity\FieldValue();
+    foreach($folder->getFieldValues() as $fieldValue) {
+        if($fieldValue->getField()->getFieldId() == $field->getFieldId()) {
+            $field_value = $fieldValue;
+        }
+    }
+
+?>
+<div class="col-4 form-group">
+    <div class="row">
+        <div class="col-4">
+            <label><?=$field->getFieldName()?></label>
+        </div>
+        <div class="col-8">
+            <input class="form-input" type="text" name="field_value[<?=$field->getFieldId();?>]" value="<?php echo $field_value->getFieldValue();?>" id="field_value_<?=$field->getFieldId();?>">
+        </div>
+    </div>
+</div>
+
+<!--<pre><?php var_dump($field->getFieldId()) ?></pre>-->
+<?php endforeach; ?>

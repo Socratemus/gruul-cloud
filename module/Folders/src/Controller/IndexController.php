@@ -55,7 +55,6 @@ class IndexController extends AbstractActionController
                 $field_value->setFolder($folder);
                 $field_value->setFieldValue($field_value_input);
                 $field_value->setField($field);
-                //echo "<pre>";var_dump($field_value->getCreated());die;
             
                 $this->getEntityManager()->persist($field_value);
             endforeach;
@@ -78,7 +77,59 @@ class IndexController extends AbstractActionController
      * Endpoint for editing folder
      */
     public function editAction() {
+        $folder_id = $this->params()->fromRoute('id');
+        $folder = $this->getEntityManager()->getRepository(\Folders\Entity\Folder::class)->findBy(['folder_id' => $folder_id]);
+        if(!isset($folder[0]) || empty($folder[0])) { 
+            throw new \Doctrine\ORM\EntityNotFoundException("Folder" . ' with ID: [ ' . $folder_id . ' ] was not found.');
+        }
+        $folder = $folder[0];
+
+        $templates = $this->getEntityManager()->getRepository(\Template\Entity\Template::class)->findAll();
+        $default_form = $this->getEntityManager()->getRepository(\Forms\Entity\Form::class)->findBy(['is_form_default' => 1]);
+        $default_form = $default_form[0];
         
+        $request=$this->getRequest();
+        
+        if($request->isPost()) {
+            $data = $request->getPost();
+            
+            foreach($data['field_value'] as $field_id => $field_value ) {
+                //must update folder field values...
+                //so I first have to get the field value entity from folder
+                $fieldValue = $this->getFieldValueByIdFromFolder($folder, $field_id);
+                
+                if(!$fieldValue) {
+                    throw new \Doctrine\ORM\EntityNotFoundException("FieldValue entity" . ' with ID: [ ' . $field_id . ' ] was not found.');
+                }
+                $fieldValue->setFieldValue($field_value);
+
+                $this->getEntityManager()->persist($fieldValue);
+                  
+                
+            }
+            
+            $this->getEntityManager()->flush();  
+            return $this->redirect()->toRoute('folders_route', ['action' => 'edit' , 'id' => $folder_id]);
+        }
+        
+        return [
+            'folder' => $folder,
+            'templates' => $templates,
+            'default_form' => $default_form
+        ];
+    }
+    
+     public function generateDocumentAction() {
+        $request = $this->getRequest();
+        $post = $request->getPost();
+         
+        //Here we must call a document generator sevice 
+        //which will connect to different application in order to generate docs
+        //and give us a proper response.
+         
+         
+         echo json_encode(['status' => 1, 'data'=> [$request->getPost()] ]);
+         die();
     }
     
     public function setEntityManager($entityManager) {
@@ -96,6 +147,15 @@ class IndexController extends AbstractActionController
             }
         endforeach;
         
+        return null;
+    }
+    
+    private function getFieldValueByIdFromFolder(\Folders\Entity\Folder $folder, $field_id) {
+        foreach($folder->getFieldValues() as $field_value) {
+            if($field_value->getField()->getFieldId() == $field_id) {
+                return $field_value;
+            }
+        }
         return null;
     }
 }

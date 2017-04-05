@@ -78,33 +78,41 @@ class IndexController extends AbstractActionController
         
         if($request->isPost()) {
             $data = $request->getPost();
+            $form = $form[0];
+            $form->setFormName($data['form_name']);
+            $form->setIsFormDefault($data['is_form_default']);
             
-            $form[0]->setFormName($data['form_name']);
-            $form[0]->setIsFormDefault($data['is_form_default']);
-            
-            foreach($form[0]->getFields() as $field) {
-                $form[0]->getFields()->remove($field);
-                $this->getEntityManager()->remove($field);
-                
+            //delete any field that is not found in post data
+            foreach($form->getFields() as $field) {
+                 $flipped = array_flip($data['field_id']);
+                 if(!isset($flipped[$field->getFieldId()])) {
+                    $this->getEntityManager()->remove($field);    
+                    $this->getEntityManager()->flush();
+                 }
             }
-            //$this->getEntityManager()->persist($form[0]);
-            $this->getEntityManager()->flush();
-            //return $this->redirect()->toRoute('forms_route', ['action' => 'edit', 'id' =>$form[0]->getFormId()]);
+            
             foreach($data['field_name'] as $index => $object) {
-                $field = new Field();
+                if(isset($data['field_id'][$index]) && !empty($data['field_id'][$index])) {
+                    $field = $this->getFieldByIdFromForm($form, $data['field_id'][$index]);
+                } else {
+                    $field = new Field();    
+                }
+                
                 $field->setFieldName($object);
                 $field->setFieldKey($data['field_key'][$index]);
-                $field->setForm($form[0]);
+                $field->setForm($form);
+                
                 if(isset($data['field_id'][$index]) && !empty($data['field_id'][$index])) {
                     $field->setFieldId($data['field_id'][$index]);    
                 }
-                $form[0]->getFields()->add($field);
+                
                 $this->getEntityManager()->persist($field);
             }
-            //var_dump( $form[0]->getFields()[0]);
-            $this->getEntityManager()->persist($form[0]);
+            
+            $this->getEntityManager()->persist($form);
             $this->getEntityManager()->flush();
-            return $this->redirect()->toRoute('forms_route', ['action' => 'edit', 'id' =>$form[0]->getFormId()]);
+            
+            return $this->redirect()->toRoute('forms_route', ['action' => 'edit', 'id' =>$form->getFormId()]);
          }
         
         $view = new ViewModel(['form' => $form[0], 'action' => 'edit']);
@@ -118,5 +126,15 @@ class IndexController extends AbstractActionController
     
     public function getEntityManager() {
         return $this->EntityManager;
+    }
+    
+    private function getFieldByIdFromForm($form, $fieldId) {
+        foreach($form->getFields() as $field) :
+            if($field->getFieldId() == $fieldId) {
+                return $field;
+            }
+        endforeach;
+        
+        return null;
     }
 }

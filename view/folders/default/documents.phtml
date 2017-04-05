@@ -1,0 +1,23 @@
+<?php foreach($templates as $template): ?>
+<div class="document-box-item col-4">
+    <div>
+        <div class="row">
+            <div class="col-4 left">
+                <img style="margin-left : 5px;margin-top: 5px;" src="<?php echo $this->basePath() . '/assets/svg/051-document.svg'?>" alt="Kiwi standing on oval">
+            </div>
+            <div class="col-8 right relative">
+                <p> <?php echo $template->getTemplateName()?> </p>
+                <hr />
+                
+                <button 
+                    preloader="#preloader-<?=$template->getTemplateId();?>" 
+                    data-template="<?=$template->getTemplateId();?>" 
+                    data-folder="<?=$folder->getFolderId();?>"
+                    class="form-btn btn-success generate-document">Genereaza</button>
+                
+                <div class="loading" id="preloader-<?=$template->getTemplateId();?>"><img src="<?=$this->basePath() . '/assets/img/default-preloader-20x20.gif'?>" alt="loading..." /></div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>

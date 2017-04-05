@@ -1,0 +1,74 @@
+<content>
+    
+    <header data-type="title" class='row'>
+        <div class="col">
+            <h4>DOSAR: <span class="highlight">1B/2016</span></h4>
+            <button class="form-btn" data-submit="FolderFieldValues">Salveaza</button>
+        </div>
+    </header>
+    
+    <div class="pt20 row" page-content>
+        <div class="col-5">
+            <div class="row">
+                <div class="col-12">
+                    <h6>Documente disponibile</h6>    
+                </div>
+                
+                <div class="col-12">
+                    <div class="row">
+                        
+                    <?= $this->render('folders/default/documents.phtml', array('templates' => $templates, 'folder' => $folder)); ?>
+                    
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <h6>Documente generate</h6>
+                </div>
+                
+                <div class="col-12">
+                    <div class="row">
+                        <?php foreach($templates as $template): ?>
+                        <div class="document-box-item col-4">
+                            <div>
+                                <div class="row">
+                                    <div class="col-4 left">
+                                        <i class="fa fa-file-word-o"></i>
+                                        <!--<img style="margin-left : 5px;margin-top: 5px;" src="<?php echo $this->basePath() . '/assets/svg/051-document.svg'?>" alt="Kiwi standing on oval">-->
+                                    </div>
+                                    <div class="col-8 right">
+                                        <p> <?php echo $template->getTemplateName()?> </p>
+                                        <hr />
+                                        <button class="form-btn btn-primary">download</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-7">
+            <div class="col-12">
+               <h6>Detalii formular - <span class="highlight"><?= $default_form->getFormName()?></span></h6>     
+            </div>
+            
+            <div class="col-12">
+                <div class="row">
+                    <form class="row" id="FolderFieldValues" method="POST" action="">
+                    <?php echo $this->render('folders/default/form-values.phtml', array('default_form' => $default_form, 'folder' => $folder)) ?>    
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+    <!--//afiseaza aici dosarul...-->
+    
+</content>
+<?php
+    $this->inlineScript()->appendFile($this->basePath('assets/app/folders.js'));
+?>
